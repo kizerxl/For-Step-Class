@@ -8,22 +8,24 @@ public class PigDice {
     }
    
     public static void main(String[] args){
-        int playerScore = 0, compScore = 0, limit = 100;
+        int playerScore = 0, compScore = 0;
+        int limit = 100;
         int playersum = 0;
         int diceface = rollDie();
         int playerDieFace = 0;
         int currentRound = 1;
         String choice ="", playerName= "";
         Scanner scan = new Scanner(System.in);
-        scan.useDelimiter(",|\\n");
-        boolean turn = true;
    
         System.out.println("Let's play Pig Dice!");
         System.out.println("Please enter your name: ");
         playerName = scan.nextLine();
        
         //computer rolls
-        do{
+       while(true){
+    	   	if ( (playerScore >= limit) || (compScore >= limit) )
+    	   		break; 
+    	   	
             System.out.println("Round "+currentRound+"\n");
             for(int num = 0; num < 3; num++){
                 System.out.println("Computer rolls a die....");
@@ -45,6 +47,8 @@ public class PigDice {
                     if(playerDieFace > 1){
                         playersum += playerDieFace;
                     	playerScore += playersum;
+                    	if(playerScore >= limit)
+                    		break;
                     }
                     else if( playerDieFace == 1){
                     	System.out.println("no pts gained...");
@@ -61,7 +65,7 @@ public class PigDice {
                         continue;
                 }
         currentRound++;
-        } while(playerScore < limit || compScore < limit);
+        }
         
         if(playerScore > compScore)
             System.out.println(playerName+" WINS!!!");
