@@ -6,9 +6,9 @@ Created on Sep 8, 2015
 
 def main():
     #test recursive method 
-    print(factorial(5))
-    factorial2(5) 
-    factorial3(10)
+#     print(factorial(5))
+#     factorial2(5) 
+#     factorial3(10)
     #print out all values less than 1 billion
     #starting with 1 
     oneBillion(1)
